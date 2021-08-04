@@ -8,9 +8,9 @@
 
 import React, {Fragment, Component} from 'react';
 import {SafeAreaView, StyleSheet, View, Button, Text} from 'react-native';
-import { connect } from 'react-redux';
-import { changeCount } from './actions/counts';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {changeCount} from './actions/counts';
+import {bindActionCreators} from 'redux';
 
 import {
   Colors,
@@ -22,12 +22,12 @@ import {
 class App extends Component {
   // state = {count: 0};
   decrementCount() {
-    let {count, actions } = this.props;
+    let {count, actions} = this.props;
     count--;
     actions.changeCount(count);
   }
   incrementCount() {
-    let {count, actions } = this.state;
+    let {count, actions} = this.state;
     count++;
     actions.changeCount(count);
   }
@@ -57,13 +57,9 @@ const mapStateToProps = state => ({
   count: state.count,
 });
 
-const ActionCreators = Object.assign(
-  {},
-  changeCount,
-);
-const mapDispatchToProps =dispatch => ({
+const ActionCreators = Object.assign({}, changeCount);
+const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(ActionCreators, dispatch),
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
